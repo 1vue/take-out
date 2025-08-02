@@ -92,15 +92,30 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public PageResult pageRecords(EmployeePageQueryDTO employeePageQueryDTO) {
 
-        PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
+        PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPageSize());
 
-        Page<Employee> pageRecords=employeeMapper.pageRecords(employeePageQueryDTO);
+        Page<Employee> pageRecords = employeeMapper.pageRecords(employeePageQueryDTO);
 
-        long total=pageRecords.getTotal();
-        List records=pageRecords.getResult();
+        long total = pageRecords.getTotal();
+        List records = pageRecords.getResult();
+        return new PageResult(total, records);
+    }
+
+    /**
+     * 修改员工账号状态
+     *
+     * @param status
+     * @param id
+     */
+    @Override
+    public void updateStatus(Integer status, Long id) {
+
+        Employee employee = Employee.builder()
+                .id(id)
+                .status(status)
+                .build();
 
 
-
-        return new PageResult(total,records);
+        employeeMapper.updateEmp(employee);
     }
 }

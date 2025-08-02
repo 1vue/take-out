@@ -32,4 +32,6 @@ public interface EmployeeMapper {
 
 
     Page<Employee> pageRecords(EmployeePageQueryDTO employeePageQueryDTO);
+
+    void updateEmp(Employee employee);
 }

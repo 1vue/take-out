@@ -21,5 +21,17 @@ public interface EmployeeService {
      */
     void addEmployee(EmployeeDTO employeeDTO);
 
+    /**
+     * 分页查询
+     * @param employeePageQueryDTO
+     * @return
+     */
     PageResult pageRecords(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     * 修改员工账号状态
+     * @param status
+     * @param id
+     */
+    void updateStatus(Integer status, Long id);
 }
